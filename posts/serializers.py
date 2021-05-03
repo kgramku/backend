@@ -7,15 +7,12 @@ from .models import Post
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = ['content', 'image']
        # field = ['content']
 
-    def validate_content(self,value):
-        print('helo')
-        if len(value) > MAX_POST_LENGTH:
-            print('if bhitra')
+    def validate_content(self,value):       
+        if len(value) > MAX_POST_LENGTH:           
             raise serializers.ValidationError("post too long")
-        print(value)
         return value
 
     

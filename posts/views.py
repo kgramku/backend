@@ -24,14 +24,14 @@ def home_view(request, *args, **kwargs):
 @permission_classes([IsAuthenticated])
 def post_create_view(request, *args, **kwargs):
     serializer = PostSerializer(data=request.POST)
-    validated = serializer.is_valid()
+    validated = serializer.is_valid(raise_exception= True)
     print(validated)
     if validated:
         print('hi1')
         serializer.save(user = request.user)
         return Response(serializer.data, status=201)
     # print('kho')
-    return Response({},status = 400)
+    #return Response({},status = 400)
 
 @api_view(['GET'])
 def post_detail_view(request,post_id, *args, **kwargs):

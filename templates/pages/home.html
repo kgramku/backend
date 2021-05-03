@@ -68,6 +68,8 @@
         alert("There was a server error. Plejjjase try again");
       } else if (xhr.status === 400) {
         const errorJson = xhr.response;
+        console.log(xhr.responseText);
+        console.log({ errorJson });
         const contentError = JSON.parse(errorJson).content;
         let contentErrorMsg;
         if (contentError) {
@@ -78,7 +80,7 @@
             alert("An error occured 1");
           }
         } else {
-          alert("An error occured 2");
+          alert("An error occured is 2");
         }
       } else if (xhr.status === 401) {
         alert("you must login");
