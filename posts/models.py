@@ -33,3 +33,4 @@ class Post(models.Model):
             "likes" : random.randint(0,200)
 
         }
+        

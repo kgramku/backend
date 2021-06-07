@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'crispy_forms',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #thirdparty
@@ -46,6 +47,8 @@ INSTALLED_APPS = [
     'corsheaders',
     #internal
     'posts' ,
+    'accounts',
+    'profiles'
 ]
 
 MIDDLEWARE = [
@@ -126,6 +129,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
+LOGIN_REDIRECT_URL ='/'
 
 STATIC_URL = '/static/'
 CORS_ALLOW_ALL_ORIGINS = True
@@ -148,3 +152,5 @@ CORS_URLS_REGEX = r'^/api/.*$'
 #     'DEFAULT_RENDERER_CLASSES': DEFAULT_RENDERER_CLASSES
     
 # }
+
+CRISPY_TEMPLATE_PACK="bootstrap4"

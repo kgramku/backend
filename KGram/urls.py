@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path , include
+from django.views.generic import TemplateView
+from rest_framework.schemas import get_schema_view
+
 from posts.views import (home_view, post_detail_view, post_list_view, 
 post_create_view, post_delete_view,post_actions_view, )
+
+from accounts.views import( login_view, registration_view, logout_view)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,7 +29,30 @@ urlpatterns = [
     path('posts/', post_list_view),
     path('posts/<int:post_id>', post_detail_view),
     path('create-post', post_create_view),
-    path('api/posts/',include('posts.urls'))
+    path('api/posts/',include('posts.urls')),
+    re_path(r'profiles?/',include('profiles.urls')),
+    # path('', include("django.contrib.auth.urls")),
+    path('login/', login_view),
+    path('logout/', logout_view),
+    path('register/', registration_view),
+
+    #api documentationurl
+    path('redoc/', TemplateView.as_view(
+        template_name='redoc.html',
+        extra_context={'schema_url':'openapi-schema'}
+    ), name='redoc'),
+    path('docs/', TemplateView.as_view(
+        template_name='docs.html',
+        extra_context={'schema_url':'openapi-schema'}
+    ), name='docs.html'),
+    path('openapi/', get_schema_view(
+            title="Your Project",
+            description="API for all things …",
+            version="1.0.0"
+        ), name='openapi-schema'),
 ]
+
+
+
 
 

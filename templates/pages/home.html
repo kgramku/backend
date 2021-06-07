@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% if user.is_authenticated %} {% block content %}
 <div class="row text-center">
   <div class="column">
     <h1>Welcome to KGram</h1>
@@ -212,4 +212,6 @@
     return formattedPost;
   }
 </script>
-{% endblock content %}
+{% endblock content %} {% else %}
+<p><a href="/login">login here</a></p>
+{% endif %}
