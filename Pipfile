@@ -7,7 +7,7 @@ name = "pypi"
 django = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
-PyYAML==5.4.1
+pyyaml=="*"
 
 [dev-packages]
 
